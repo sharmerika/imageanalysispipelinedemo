@@ -10,7 +10,7 @@ from azure.core.credentials import AzureKeyCredential
 #load credentials from .env
 from dotenv import load_dotenv
 import os
-load_dotenv(dotenv_path=r"C:\Users\Sharmaine Erika\Downloads\.env")
+load_dotenv(dotenv_path=r"dot_env_path")
 AZURE_ENDPOINT = os.getenv("AZURE_ENDPOINT")
 AZURE_KEY_PRIMARY = os.getenv("AZURE_KEY_PRIMARY")
 print("Endpoint loaded:", os.getenv("AZURE_ENDPOINT"))
@@ -21,9 +21,9 @@ client = ImageAnalysisClient(
     credential=AzureKeyCredential(AZURE_KEY_PRIMARY)
 )
 #image paths
-IMAGE_PATH = r"C:\Users\Sharmaine Erika\Downloads\demo.png"
-RESIZED_PATH = r"C:\Users\Sharmaine Erika\Downloads\demo_resized.png"
-RESULT_FOLDER = r"C:\Users\Sharmaine Erika\Downloads\results"
+IMAGE_PATH = r"image_path"
+RESIZED_PATH = r"resized_path"
+RESULT_FOLDER = r"result_path"
 #resize image with Pillow
 try:
     img = Image.open(IMAGE_PATH)
@@ -62,7 +62,7 @@ try:
             print(f" - {tag['name']} ({tag['confidence']:.2f}")
     #save results to .txt and .json
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    folder = r"C:\Users\Sharmaine Erika\Downloads\results"
+    folder = r"folder_path"
     txt_path = os.path.join(folder, f"vision_log_{timestamp}.txt")
     json_path = os.path.join(folder, f"vision_log_{timestamp}.json")
 
